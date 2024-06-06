@@ -1,0 +1,79 @@
+/* Hero.css */
+
+.hero-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    height: 45rem;
+    background-color: #F2F1EC;
+}
+
+.green-part {
+    position: absolute;
+    right: 0;
+    width: 32%;
+    height: 100%;
+    background-color: #345333;
+}
+
+.hero-image {
+    position: absolute;
+    right:0;
+    left: 60rem;
+    bottom: 20;
+    width: 40%;
+    max-width: 850px;
+    height: auto;
+}
+.hero-content {
+    z-index: 1;
+    max-width: 50%;
+}
+
+.hero-content h2 {
+    color: #666;
+    font-size: 1.2rem;
+}
+
+.hero-content h1 {
+    color: #333;
+    font-size: 3rem;
+}
+
+.hero-content p {
+    color: #666;
+    font-size: 1rem;
+    margin: 20px 0;
+}
+
+.hero-content button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    cursor: pointer;
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.stats div {
+    text-align: center;
+}
+
+.stats h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.stats p {
+    margin: 5px 0 0 0;
+    color: #666;
+    font-size: 1rem;
+}
