@@ -3,19 +3,30 @@
     justify-content: space-between;
     align-items: center;
     padding: 30px 20px;
-    background-color: #fff;
+    background-color: #F2F1EC;
     font-family: Arial, sans-serif;
     position: relative;
     z-index: 1000;  /* Ensure navbar is above other sections */
 }
+
+.logo-heading{
+    font-size: xx-large;
+    color: rgb(79, 77, 77);
+}
+.logo-heading strong{
+    color: black;
+    font-weight: 600;
+}
+
+
 
 .navbar-left a,
 .navbar-right a,
 .connect {
     margin: 0 15px;
     text-decoration: none;
-    color: #333;
-    font-size: 16px;
+    color: #080808;
+    font-size: 18px;
 }
 
 .navbar-center h1 {
@@ -26,7 +37,7 @@
 
 .icons a {
     margin: 0 10px;
-    color: #333;
+    color: #345333;
     font-size: 18px;
 }
 
@@ -76,3 +87,5 @@
         display: none;
     }
 }
+
+
