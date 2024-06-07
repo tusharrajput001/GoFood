@@ -21,6 +21,7 @@ function Hero() {
                         <p>Products</p>
                     </div>
                 </div>
+
                 
             </div>
             <img src={plateImage} alt="Plate of Food" className='hero-image'/>

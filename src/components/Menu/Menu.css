@@ -1,96 +1,116 @@
 /* Menu.css */
 
 .menu-container {
-    padding: 20px;
-    background-color: #F2F1EC;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
+  padding: 20px;
+  background-color: #f2f1ec;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
 }
 
 .menu-container h2 {
-    color: #666;
-    font-size: 1.5rem;
+  color: #666;
+  font-size: 1.5rem;
 }
 
 .menu-container h1 {
-    color: #333;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 }
 
 .category-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
 .category-buttons button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #E8E8E8;
-    color: #333;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 20px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #e8e8e8;
+  color: #333;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 20px;
 }
 
 .category-buttons button.active {
-    background-color: #345333;
-    color: #fff;
+  background-color: #345333;
+  color: #fff;
 }
 
 .menu-items {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .menu-item {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .menu-item img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-right: 20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 20px;
 }
 
 .item-info {
-    flex: 1;
-    text-align: left;
+  flex: 1;
+  text-align: left;
 }
 
 .item-info h3 {
-    margin: 0;
-    color: #333;
-    font-size: 1.2rem;
+  margin: 0;
+  color: #333;
+  font-size: 1.2rem;
 }
 
 .item-info p {
-    color: #666;
-    font-size: 0.9rem;
+  color: #666;
+  font-size: 0.9rem;
 }
 
 .item-price {
-    color: #333;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-right: 20px;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 20px;
 }
 
 .shop-now {
-    padding: 10px 20px;
-    background-color: #345333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+  padding: 10px 20px;
+  background-color: #345333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+@media (max-width: 580px) {
+  .menu-item {
+    flex-direction: column;
+    padding: 10px;
+  }
+  .item-info {
+    margin-top: 10px;
+    flex: 1;
+    text-align: center;
+  }
+  .shop-now {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .item-price{
+    margin-top: 20px;
+  }
+
 }
