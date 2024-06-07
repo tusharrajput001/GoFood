@@ -1,59 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './Menu.css';
 
-
-const menuData = {
-    "Fruits and Vegetables": [
-        { id: 1, name: "Apple", price: "$1.45" },
-        { id: 2, name: "Banana", price: "$0.45" }
-    ],
-    "Bakery": [
-        { id: 1, name: "Bread", price: "$2.00" },
-        { id: 2, name: "Croissant", price: "$1.50" }
-    ],
-    "Meat and Seafood": [
-        { id: 1, name: "Italian-Style Chicken Meatballs", price: "$8.45" },
-        { id: 2, name: "Seafoods Stuffed Alaskan Salmon", price: "$8.45" },
-        { id: 3, name: "Choice Angus Beef Stew Meat", price: "$8.45" },
-        { id: 4, name: "Crispy Classic Buffalo Wings", price: "$8.45" } 
-    ],
-    "Beverage": [
-        { id: 1, name: "Orange Juice", price: "$3.45" },
-        { id: 2, name: "Milk", price: "$2.45" }
-    ],
-    "Biscuit and Snacks": [
-        { id: 1, name: "Chocolate Chip Cookies", price: "$1.45" },
-        { id: 2, name: "Potato Chips", price: "$1.00" }
-    ]
-};
-
 function Menu() {
-    const [selectedCategory, setSelectedCategory] = useState("Meat and Seafood");
+    const [categories, setCategories] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [menuItems, setMenuItems] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        // Fetch list of categories
+        axios.get('https://www.themealdb.com/api/json/v1/1/list.php?c=list')
+            .then(response => {
+                const categoryList = response.data.meals;
+                setCategories(categoryList);
+                if (categoryList.length > 0) {
+                    setSelectedCategory(categoryList[0].strCategory);
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching the categories:', error);
+            });
+    }, []);
+
+    useEffect(() => {
+        if (selectedCategory) {
+            setLoading(true);
+            // Fetch data of selected category
+            axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${selectedCategory}`)
+                .then(response => {
+                    setMenuItems(response.data.meals);
+                    setLoading(false);
+                })
+                .catch(error => {
+                    console.error('Error fetching the data:', error);
+                    setLoading(false);
+                });
+        }
+    }, [selectedCategory]);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="menu-container">
             <h2>Shop by Category</h2>
             <h1>Top Category Of Organic Food</h1>
             <div className="category-buttons">
-                {Object.keys(menuData).map(category => (
+                {categories.map(category => (
                     <button 
-                        key={category} 
-                        onClick={() => setSelectedCategory(category)}
-                        className={selectedCategory === category ? "active" : ""}
+                        key={category.strCategory} 
+                        onClick={(e) => {
+                            e.preventDefault();
+                            setSelectedCategory(category.strCategory);
+                        }}
+                        className={selectedCategory === category.strCategory ? "active" : ""}
                     >
-                        {category}
+                        {category.strCategory}
                     </button>
                 ))}
             </div>
             <div className="menu-items">
-                {menuData[selectedCategory].map(item => (
-                    <div className="menu-item" key={item.id}>
-                        {/* <img src={item.img} alt={item.name} /> */}
+                {menuItems.map(item => (
+                    <div className="menu-item" key={item.idMeal}>
+                        <img src={item.strMealThumb} alt={item.strMeal} />
                         <div className="item-info">
-                            <h3>{item.name}</h3>
+                            <h3>{item.strMeal}</h3>
                             <p>Lorem ipsum dolor sit amet quam in lacus risus.</p>
                         </div>
-                        <div className="item-price">{item.price}</div>
+                        <div className="item-price">₹500</div>
                         <button className="shop-now">Shop Now</button>
                     </div>
                 ))}
